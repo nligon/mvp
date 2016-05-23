@@ -17,28 +17,25 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
+  NextUp
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
+  Task management for busy people.
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+  NextUp helps you get more done by helping you focus on what matters most. By balancing out your tasks according to time-sensitivity and importance, you'll automatically be given an ordered list of your most important action-items. With NextUp, you don't need to worry about juggling all your worries in your head. Once you plug in your to-do's and let the system take care of the rest, you'll be amazed at the clarity and productivity you can achieve.
 ## Problem ##
-  > Describe the problem your product solves.
+  People with a lot of items on their to-do lists frequently have trouble prioritizing them, and end up working on the wrong things in an attempt to work on *something*.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  NextUp helps people know what items they need to address next, by sorting them according to importance and time-sensitivity.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  "NextUp might actually be the most important piece of software ever created."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Just head to NextUp.com, sign up, and start plugging your tasks in.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "Now that I'm paying my bills on time, my children are actually speaking to me again. Thanks, NextUp!"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  To find freedom from your overwhelming task list, head to our website and see what NextUp can do for you.
