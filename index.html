@@ -1,30 +1,163 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>NextUp</title>
 
-<body>
-  <div ng-app="myApp" ng-controller="myCtrl">
-    First Name:
-    <input type="text" ng-model="firstName">
-    <br> Last Name:
-    <input type="text" ng-model="lastName">
-    <br>
-    <br> Full Name: {{firstName + " " + lastName}}
-    <ul>
-      <li>Type a color:
-        <input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
-      </li>
-    </ul>
+<head>
+  <link rel='stylesheet' href='assets/css/styles.css'>
+   <link rel='stylesheet' href='assets/css/mystyles.css'>
+</head>
+
+<body ng-app="nextUp" ng-controller="taskCtrl">
+ 
+ <div class='container'>
+  <h1>NextUp</h1>
+  <h3>The Greatest App Ever Created Ever</h3>  
+  <p><b>Urgent</b> refers to time sensitivity. Urgent tasks have a fast-approaching deadline.
+  <p><b>Important</b> refers to value and consequence. Important tasks relate directly to your life goals, or at least involve serious consequences. 
+  
+  <p>For each task you add, ask yourself, "Is this urgent? Is this important?"</p>
+  <!-- Define ng-submit directive to add tasks-->
+  <form ng-submit="taskAdd1()">
+    <input type="text" ng-model="taskInput1" size="50" placeholder="I must...">
+    <input class = "button" type="submit" value="Add New 'Urgent And Important'">
+  </form>
+  <form ng-submit="taskAdd2()">
+    <input type="text" ng-model="taskInput2" size="50" placeholder="I need to...">
+    <input class = "button" type="submit" value="Add New 'Not Urgent But Still Important'">
+  </form>
+  <form ng-submit="taskAdd3()">
+    <input type="text" ng-model="taskInput3" size="50" placeholder="I should...">
+    <input class = "button" type="submit" value="Add New 'Urgent But Not Important'">
+  </form>
+  <form ng-submit="taskAdd4()">
+    <input type="text" ng-model="taskInput4" size="50" placeholder="I want to...">
+    <input class = "button" type="submit" value="Add New 'Neither Urgent Nor Important">
+  </form>
+  <!-- define ng-repeat directives to instantiate tasks -->
+  <h5>Crisis (Priority I):</h5>
+  <div ng-repeat="x in taskList1">
+    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.taskText"></span>
   </div>
-  <!-- <div ng-app="" ng-init="myCol='lightblue'"> -->
-  <!-- </div> -->
+  <h5>Productivity (Priority II):</h5>
+  <div ng-repeat="x in taskList2">
+    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.taskText"></span>
+  </div>
+  <h5>Distraction (Priority III):</h5>
+  <div ng-repeat="x in taskList3">
+    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.taskText"></span>
+  </div>
+  <h5>Waste (Priority IV):</h5>
+  <div ng-repeat="x in taskList4">
+    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.taskText"></span>
+  </div>
+  <p>
+    <!-- define ng-click directive for removal button -->
+    <button ng-click="remove()">Clear completed</button>
+  </p>
+  <!-- Custom task experiments -->
+  <!-- <p style="task: {{task.name}}">Priority: {{task}}</p> -->
+  <!-- <form name="myForm">
+    <label ng-repeat="taskName in priorities">
+      <input type="radio" name="urgent" ng-model="task.name" ng-value="taskName" /> {{taskName}}
+      <br/>
+    </label> -->
+  </form>
+  </div>
+  <!--   <label class="switch">
+  <input type="checkbox">
+  <div class="slider round"></div> -->
+  </label>
+  
+  <!-- JAVASCRIPT BEGINS HERE -->
+  <script>
+  // define app module
+  var app = angular.module('nextUp', []);
+  app.controller('taskCtrl', function($scope) {
+    $scope.taskList1 = [{
+      taskText: 'Subscribe Sunny to "My Daily Cat-Pix"',
+      done: false
+    }];
+
+    $scope.taskList2 = [{
+      taskText: 'Learn COBOL',
+      done: false
+    }];
+
+    $scope.taskList3 = [{
+      taskText: 'Hasten The Coming of the Dark Lord',
+      done: false
+    }];
+
+    $scope.taskList4 = [{
+      taskText: 'Finally learn Tibetan throat-singing',
+      done: false
+    }];
+
+    $scope.taskAdd1 = function() {
+      $scope.taskList1.push({
+        taskText: $scope.taskInput1,
+        done: false
+      });
+      $scope.taskInput1 = "";
+    };
+
+    $scope.taskAdd2 = function() {
+      $scope.taskList2.push({
+        taskText: $scope.taskInput2,
+        done: false
+      });
+      $scope.taskInput2 = "";
+    };
+
+    $scope.taskAdd3 = function() {
+      $scope.taskList3.push({
+        taskText: $scope.taskInput3,
+        done: false
+      });
+      $scope.taskInput3 = "";
+    };
+
+    $scope.taskAdd4 = function() {
+      $scope.taskList4.push({
+        taskText: $scope.taskInput4,
+        done: false
+      });
+      $scope.taskInput4 = "";
+    };
+
+    $scope.remove = function() {
+      var old1 = $scope.taskList1;
+      var old2 = $scope.taskList2;
+      var old3 = $scope.taskList3;
+      var old4 = $scope.taskList4;
+      // console.log('$scope', $scope);
+      $scope.taskList1 = [];
+      $scope.taskList2 = [];
+      $scope.taskList3 = [];
+      $scope.taskList4 = [];
+      // console.log('angular: ', angular);
+      angular.forEach(old1, function(x) {
+        if (!x.done) $scope.taskList1.push(x);
+      });
+      angular.forEach(old2, function(x) {
+        if (!x.done) $scope.taskList2.push(x);
+      });
+      angular.forEach(old3, function(x) {
+        if (!x.done) $scope.taskList3.push(x);
+      });
+      angular.forEach(old4, function(x) {
+        if (!x.done) $scope.taskList4.push(x);
+      });
+    };
+
+    // $scope.priorities = ['Priority 1', 'Priority 2', 'Priority 3', 'Priority 4'];
+    // $scope.task = {};
+    // $scope.customtask = {};
+
+  });
+  </script>
+</div>
 </body>
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-  $scope.firstName = "";
-  $scope.lastName = "";
-});
-</script>
 
 </html>
